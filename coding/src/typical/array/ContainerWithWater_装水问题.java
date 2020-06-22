@@ -11,8 +11,48 @@ public class ContainerWithWater_装水问题 {
     // 因为  l ,r 首先要取短的
     // 从两端往中间靠
     //https://leetcode.com/problems/container-with-most-water/
+    public int maxArea(int[] height) {
+        int l = 0;
+        int r = height.length-1;
+        int _max=0,temp=0;
+        while(l<r){
+            if(height[l]<height[r]){
+                temp = height[l]*(r-l);
+                l++;
+            }else{
+
+                temp = height[r]*(r-l);
+                r--;
+            }
+            _max = Math.max(_max,temp);
+        }
+        return _max;
+    }
 
 //    https://leetcode.com/problems/trapping-rain-water/
+public int trap(int[] height) {
+    int l = 0;
+    int r = height.length-1;
+    int res = 0;
+    int maxleft = 0,maxright= 0;
+    while(l<=r){
+        if(height[l]<=height[r]){
+            if(height[l]>maxleft) maxleft=height[l];
+            else res+=maxleft-height[l];
+            l++;
+        }else{
+            if(height[r]>maxright) maxright=height[r];
+            else res+=maxright-height[r];
+            r--;
+        }
+    }
+    return res;
+
+}
+
+
+
+
 public TreeNode constructMaximumBinaryTree(int[] nums) {
     if(nums.length==0) return null;
     int idx=-1;

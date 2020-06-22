@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Stack;
 
 public class 求数组中每个位置左边和右边最近的且值小于当前的位置 {
+    // 建立一个栈，在遍历时，遇到什么情况停止遍历处理？遇到右边值比栈顶元素小的时候，说明右边的找到了，那么左边的在栈中寻找
     private int[][] getNearLessNoRepeat(int[] arr){
         int[][] res = new int[arr.length][2];
         Stack<Integer> st  = new Stack<>();
