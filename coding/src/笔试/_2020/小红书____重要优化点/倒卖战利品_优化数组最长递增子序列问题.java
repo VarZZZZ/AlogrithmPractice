@@ -33,12 +33,12 @@ public class 倒卖战利品_优化数组最长递增子序列问题 {
     //res=1 rs=2;dp[1]=10   rs=2;dp[1]=10          rs=3 dp[2]=3               rs=4
     //很明显，更新dp[l]的值，用小的值替换掉大的值
     //对dp问题进行优化-二分优化-- 此处的dp表示位置；
-    private static int LIS(int[] arr){
+    private static int LIS(int[] arr){                      // 可以解决装最多信封的问题；
         int[] dp = new int[arr.length];
         int res = 0;  // 下标
         for(int a:arr){
             int l=0,r=res;
-            while(l<r){
+            while(l<r){            // dp[l]...dp[r]是有序的
                 int m = (l+r)/2;
                 if(dp[m]<a) l = m+1;
                 else r = m;
