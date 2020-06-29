@@ -14,7 +14,7 @@ public class 给定字符串_加减乘除_任意加括号_求计算值 {
         for(int i=0;i<input.length();i++){
             char c = input.charAt(i);
             if(c=='-'||c=='+'||c=='*'){
-                String p1 = input.substring(0,i);
+                String p1 = input.substring(0,i);   // 分解
                 String p2 = input.substring(i+1);
                 List<Integer> l1 = map.getOrDefault(p1,diffWaysToCompute(p1));
                 List<Integer> l2 = map.getOrDefault(p2,diffWaysToCompute(p2));
