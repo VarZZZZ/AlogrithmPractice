@@ -42,8 +42,9 @@ public class 词到词的最少次数变换 {
                         }
                     }
                 }
-                if(f) break;
+
             }
+            if(f) break; // 应该在哪
         }
     }
 

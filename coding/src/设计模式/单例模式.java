@@ -18,7 +18,7 @@ class HungrySingleInstance{
 
 // 懒汉式
 class LazySingleInstance{
-    private static LazySingleInstance instance = null;
+    private static volatile LazySingleInstance instance = null; // 需要加上volatile；禁止重排序
     private LazySingleInstance(){
     }
     public static LazySingleInstance getInstance(){

@@ -1,5 +1,7 @@
 package typical.math;
 
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.Stack;
 
 public class 给定字符串_包括括号和加减_计算 {
@@ -47,12 +49,12 @@ public class 给定字符串_包括括号和加减_计算 {
         int temp = 0;
         int factor = 0;
         char sign = '+';
-        for(int i=0;i<sc.length;i++){
+        for(int i=0;i<sc.length;i++){  // 去除所有* / 只剩下+ -
             char c= sc[i];
             if(Character.isDigit(c)){
                 temp = temp*10 +(int)(c-'0');
             }
-            if(!Character.isDigit(c)&&c!=' '||i==sc.length-1){
+            if(!Character.isDigit(c)&&c!=' '||i==sc.length-1){ // 当前c是符号，判断前一个符号sign，
                 if(sign=='+'){
                     st.push(temp);
                 }
@@ -74,6 +76,7 @@ public class 给定字符串_包括括号和加减_计算 {
             res +=st.pop();
         }
         return res;
-
     }
+
+
 }

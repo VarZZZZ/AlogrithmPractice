@@ -1,6 +1,8 @@
 package typical.concurrent;
 
 import java.util.LinkedList;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -71,8 +73,6 @@ public class Producer_Consumer {
 }
 
 class ReenTrantLock_Condition{
-
-
     private LinkedList<Object> buffer;    //生产者容器
         private int maxSize ;           //容器最大值是多少
         private Lock lock;
@@ -121,6 +121,35 @@ class ReenTrantLock_Condition{
             }
             return obj;
         }
-
-
+}
+class BlockingQueueDriver{
+    public static void main(String[] args) {
+        BlockingQueue<Object> que = new ArrayBlockingQueue<>(10);
+        class Producer implements Runnable{
+            @Override
+            public void run() {
+                while(true){
+                    try {
+                        que.put(new Object());
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        class Consumer implements Runnable{
+            @Override
+            public void run() {
+                while (true){
+                    try {
+                        que.take();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        new Thread(new Producer()).start();;
+        new Thread(new Consumer()).start();
+    }
 }

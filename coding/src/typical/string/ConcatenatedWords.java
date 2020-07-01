@@ -42,4 +42,8 @@ public class ConcatenatedWords {
         }
         return dp[word.length()];
     }
+
+    // 拼接所有字符串，使其字典顺序最小，利用b ba , 利用compare, 比较bba bab,小的放在前面
+
+
 }
