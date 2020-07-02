@@ -26,4 +26,7 @@ public class _2020_美团_字符串模式匹配 {
         }
         System.out.println(dp[m][n]?1:0);
     }
+
+
+
 }
