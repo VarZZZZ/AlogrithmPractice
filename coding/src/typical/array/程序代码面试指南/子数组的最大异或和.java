@@ -20,7 +20,6 @@ public class 子数组的最大异或和 {
     }
     class NumTrie{
         Node head =new Node();
-
         void add(int newNum){
             Node cur = head;
             for(int i=31;i>=0;i--){

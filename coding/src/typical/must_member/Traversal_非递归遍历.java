@@ -70,22 +70,22 @@ public class Traversal_非递归遍历 {
         List<Integer> res = new LinkedList<>();
         Stack<TreeNode> st = new Stack<>();
         st.push(root);
-        TreeNode h = root;
-        TreeNode c = null;
+        TreeNode pre = root;
+        TreeNode cur = null;
         while(!st.isEmpty()){
-            c = st.peek();
-            if(c.left!=null&&h!=c.left&&h!=c.right){
-                st.push(c.left);
-            }else if(c.right!=null&&h!=c.right){
-                st.push(c.right);
+            cur = st.peek();
+            if(cur.left!=null&&pre!=cur.left&&pre!=cur.right){
+                st.push(cur.left);
+            }else if(cur.right!=null&&pre!=cur.right){
+                st.push(cur.right);
             }else{
                 res.add(st.pop().val);
-                h = c;
+                pre = cur;
             }
         }
         return res;
     }
-    // morris遍历，不用栈结构遍历
+    // morris遍历，不用栈结构遍历------以时间换空间
     // 假设当前节点为cur
     //1.如果cur为nul，则过程停止，否则继续
     //2.如果cur没有左子树，则让cur向右移动，令cur=cur.right;
@@ -113,6 +113,7 @@ public class Traversal_非递归遍历 {
             }else{
                 System.out.println(cur.val+" ");
             }
+            // 如果当前节点没有左子树
             cur=cur.right;
         }
     }

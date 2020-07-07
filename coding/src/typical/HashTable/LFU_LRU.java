@@ -33,7 +33,7 @@ public class LFU_LRU {
             int cnt = keyCnt.get(key);
             keyCnt.put(key,cnt+1);
             cntKey.get(cnt).remove(key);
-            if(cnt==min && cntKey.get(cnt).size()==0){
+            if(cnt==min && cntKey.get(cnt).size()==0){ // 如果访问的是频率最小的key，且频率最小的key只有这一个，那么提升最小频率
                 min++;
             }
             if(!cntKey.containsKey(cnt+1)){
@@ -123,7 +123,7 @@ public class LFU_LRU {
                 addNode(node);
                 map.put(key,node);
                 count++;
-                if(count>this.capacity){
+                if(count>this.capacity){   // 删两个
                     DLinkNode tail=this.popTail();
                     this.map.remove(tail.key);
                     count--;

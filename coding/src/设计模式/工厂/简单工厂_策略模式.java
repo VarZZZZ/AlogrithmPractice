@@ -1,6 +1,6 @@
 package 设计模式.工厂;
 
-public class 简单工厂 {
+public class 简单工厂_策略模式 {
 }
 
 
@@ -45,10 +45,31 @@ class Driver{
     }
 }
 
+// 策略模式
+class CarStrategyDriver{
+    Car car = null;
+
+    public CarStrategyDriver(Car car) {
+        this.car = car;
+    }
+    public void drive(){
+        this.car.drive();
+    }
+}
+
 class SimplyFactory{
     public static void main(String[] args) {
         Car car = Driver.createCar("Benz");
         car.setName("benz");
         car.drive();
+    }
+}
+
+// 策略模式
+class StrategyFactory{
+    public static void main(String[] args) {
+        Car c = new Benz();
+        CarStrategyDriver context = new CarStrategyDriver(c);
+        c.drive();
     }
 }

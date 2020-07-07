@@ -4,6 +4,8 @@ import java.util.Random;
 
 public class 乱序数组中第Kth大的值 {
     //https://leetcode.com/problems/kth-largest-element-in-an-array/
+    //https://blog.csdn.net/a3192048/article/details/82055183;
+    //bfptr 中位数的中位数 作为Pivort
     public static void main(String[] args) {
         乱序数组中第Kth大的值 k = new 乱序数组中第Kth大的值();
         int[] nums = new int[]{3,2,1,5,6,4};

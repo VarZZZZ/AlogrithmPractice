@@ -10,7 +10,7 @@ public class TaskScheduler___ {
         for(char t:tasks){
             cnt[t-'A']++;
             if(max==cnt[t-'A']){
-                maxCnt++;
+                maxCnt++;        // 有着相同最大值的任务'字符'的个数
             }else if(max<cnt[t-'A']){
                 max=cnt[t-'A'];
                 maxCnt=1;

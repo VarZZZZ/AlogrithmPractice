@@ -7,6 +7,21 @@ import java.util.List;
 public class Sort_array {
     //https://blog.csdn.net/weixin_41190227/article/details/86600821
 
+    //冒泡排序
+    public static int[] bubbleSort(int[] array) {
+        if (array.length == 0)
+            return array;
+        for (int i = 0; i < array.length; i++)
+            for (int j = 0; j < array.length - 1 - i; j++)
+                if (array[j + 1] < array[j]) {
+                    int temp = array[j + 1];
+                    array[j + 1] = array[j];
+                    array[j] = temp;
+                }
+        return array;
+    }
+
+
     // 希尔排序
     private int[] shellSort(int[] array) {
         int len = array.length;
@@ -16,7 +31,7 @@ public class Sort_array {
             for (int i = gap; i < len; i++) {
                 tmp = array[i];
                 int pre_idx = i - gap;
-                while (pre_idx >= 0 && array[pre_idx] > tmp) {
+                while (pre_idx >= 0 && array[pre_idx] > tmp) { // 同样是插入排序
                     array[pre_idx + gap] = array[pre_idx];
                     pre_idx -= gap;
                 }
@@ -70,22 +85,22 @@ public class Sort_array {
     public void mergeSort(int [] a,int start,int end){
         if(start<end){//当子序列中只有一个元素时结束递归
             int mid=(start+end)/2;//划分子序列
-            mergeSort(a, start, mid);//对左侧子序列进行递归排序
+            mergeSort(a, start, mid);  //对左侧子序列进行递归排序，得到排好序的左边
             mergeSort(a, mid+1, end);//对右侧子序列进行递归排序
-            merge(a, start, mid, end);//合并
+            merge(a, start, mid, end);//合并 两个排好序列的
         }
     }
 
 
     //快速排序
     private int[] quickSort(int[] array,int start,int end){
-        if(array.length<1||start<0||end>=array.length||start>end) return null;
+        if(start < 0 || end >= array.length || start > end) return null;
         int idx = partition(array,start,end);
         if(start<idx){
-            quickSort(array,start,idx);
+            quickSort(array,start,idx); // 返回start-idx排好序的数组
         }
         if(idx<end){
-            quickSort(array,idx+1,end);
+            quickSort(array,idx+1,end); // 返回idx+1-end排好序的数组
         }
         return array;
     }
@@ -97,7 +112,7 @@ public class Sort_array {
         int i = lo,j = hi;
         while(i<j){
             while(i<j&&array[j]>=tt) j--;
-            while(i<j&&array[i]<=tt) i++;
+            while(i<j&&array[i]<=tt) i++; // i是第二个
             if(i>=j) break;
             int t = array[i];
             array[i] = array[j];
@@ -113,7 +128,7 @@ public class Sort_array {
         array[b] = tp;
     }
 
-    // 堆排序
+    // 堆排序  o(nlogn)
     private int[] heapSort(int[] array){ // 建立大根堆 从而从小到大排序数组
         int len = array.length;
         if(len<1) return array;
@@ -131,7 +146,7 @@ public class Sort_array {
             adjustHeap(array,i);
         }
     }
-    private void adjustHeap(int[] array,int idx){
+    private void adjustHeap(int[] array,int idx){ // 应该再传一个参数len,表示数组的长度
         int maxIdx = idx;
         if(idx*2+1<array.length&&array[idx*2+1]>array[maxIdx])
             maxIdx=idx*2+1;
@@ -145,7 +160,7 @@ public class Sort_array {
         }
     }
 
-    // 计数排序-》分桶 类似于bit map;适合于整型;没有用到比较，属于非比较排序
+    // 计数排序-》分桶 类似于bit map;适合于整型;没有用到比较，属于非比较排序;一个桶就是一个数字value
     private int[] countingSort(int[] array){
         int bias,min = array[0],max=array[0];
         for(int a:array){
@@ -238,13 +253,6 @@ public class Sort_array {
         }
         return array;
     }
-
-
-
-
-
-
-
 
 
 }

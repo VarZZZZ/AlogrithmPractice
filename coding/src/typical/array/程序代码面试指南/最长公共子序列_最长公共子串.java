@@ -16,7 +16,7 @@ public class 最长公共子序列_最长公共子串 {
         }
 
         for(int i=1;i<str1.length;i++){
-            for(int j=0;j<str2.length;j++){
+            for(int j=1;j<str2.length;j++){
                 dp[i][j] = Math.max(dp[i-1][j],dp[i][j-1]);
                 if(str1[i]==str2[j]){
                     dp[i][j] = Math.max(dp[i][j],dp[i-1][j-1]);
