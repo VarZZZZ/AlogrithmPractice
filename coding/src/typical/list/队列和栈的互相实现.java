@@ -2,10 +2,10 @@ package typical.list;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
-public class 使用队列在实现栈 {
+public class 队列和栈的互相实现 {
     class MyStack {
-
         Queue<Integer> queue;
         /** Initialize your data structure here. */
         public MyStack() {
@@ -34,5 +34,33 @@ public class 使用队列在实现栈 {
         public boolean empty() {
             return queue.isEmpty();
         }
+    }
+}
+
+/**
+ * 栈实现队列
+ */
+class TwoStackQueue{
+    Stack<Integer> stPush = new Stack<>();
+    Stack<Integer> stPop = new Stack<>();
+
+    private void pushToPop(){
+        if(stPop.empty()){
+            while(!stPush.isEmpty()){
+                stPop.push(stPush.pop());
+            }
+        }
+    }
+
+    void add(int i){
+        stPush.push(i);
+        pushToPop();
+    }
+    int poll(){
+        if(stPop.empty()&&stPush.empty()){
+            return -1;
+        }
+        pushToPop();
+        return stPop.pop();
     }
 }

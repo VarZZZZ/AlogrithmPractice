@@ -35,11 +35,12 @@ public class 二维矩阵中最大的正方形面积 {
         }
         return maxArea;
     }
-    private int maxRecFromBottom(int[] height){
+    private int maxRecFromBottom(int[] height){ // 画个图分析
         int maxArea = 0;
         Stack<Integer> st = new Stack<>();
         for(int i=0;i<height.length;i++){
-            while(!st.isEmpty()&&height[i]<=height[st.peek()]){         // 当前高度小于栈中的高度， 求以栈中的height[j]为高度的矩形此时height[j]应该为栈最高的
+            while(!st.isEmpty()&&height[i]<=height[st.peek()]){         // 当前高度小于栈中的高度， 求以栈中的height[j]为高度的矩形
+                                                                        // 此时height[j]应该为栈最高的，宽则是以当前i和左边的一个k的差
                 int j =st.pop();
                 int k = st.isEmpty()?-1:st.peek();          // 如果Height[i]=0，那么栈中的值需要全部抛出; k为左边的idx。且该idx的值比h[j]的小；
                 int cur = (i-k-1)*height[j];                                             // 栈中的值从 顶到底 是从大到小的

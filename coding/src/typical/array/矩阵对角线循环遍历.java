@@ -10,7 +10,7 @@ public class 矩阵对角线循环遍历 {
         int[] res = new int[m*n];
 
         int r=0,c=0;
-        for(int i=0;i<m*n;i++){
+        for(int i=0;i<m*n;i++){       // 每一条线 r +c 都有奇偶之分
             res[i] = mat[r][c];
             // up
             if((r+c)%2==0){

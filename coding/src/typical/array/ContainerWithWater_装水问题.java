@@ -20,7 +20,6 @@ public class ContainerWithWater_装水问题 {
                 temp = height[l]*(r-l);
                 l++;
             }else{
-
                 temp = height[r]*(r-l);
                 r--;
             }
@@ -38,7 +37,7 @@ public int trap(int[] height) {
     while(l<=r){
         if(height[l]<=height[r]){
             if(height[l]>maxleft) maxleft=height[l];
-            else res+=maxleft-height[l];
+            else res+=maxleft-height[l]; // 如果左边的height是往下走了，且左边的最大值小于右边的height，那么，左边必然会有水位形成；右边同理
             l++;
         }else{
             if(height[r]>maxright) maxright=height[r];

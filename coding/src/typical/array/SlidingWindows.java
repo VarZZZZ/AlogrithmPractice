@@ -80,6 +80,7 @@ public class SlidingWindows {
         return ((double)firstHeap.last().val+(double)secondHeap.first().val)/2.0;
     }
 
+
     // 求一维数组， 窗口大小为w的 最大值 序列;
     private int[] getMaxWindow(int[] arr,int w){
         LinkedList<Integer> qmax = new LinkedList<>();  // 保存窗口大小，其中，peekFirst是当前窗口内值最大的下标；同时也是最左边的下标
@@ -89,11 +90,11 @@ public class SlidingWindows {
             while(!qmax.isEmpty()&&arr[qmax.peekLast()]<=arr[i]){
                 qmax.pollLast();
             }
-            qmax.addLast(i);
+            qmax.addLast(i); // qmax 从大到小(指的是ar[i])
             if(qmax.peekFirst()==i-w){
                 qmax.pollFirst();
             }
-            if(i>=w-1){
+            if(i>=w-1){ //在i>=w-1之后，每一个循环都需要添加一个res[idx]
                 res[i-w+1] = qmax.peekFirst();
             }
         }

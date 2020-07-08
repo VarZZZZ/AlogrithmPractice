@@ -22,7 +22,7 @@ public class 消消乐_v2 {
         for(int z=i+1;z<=j;z++){  // 第一次循环， char[i] 与 char[i+1]必定不相等;
             if(boxes[z]==boxes[i]){
                 // 中间消除一块，右端拼到左端
-                res = Math.max(res,helper(boxes,i+1,z-1,0,dp)+helper(boxes,z,j,m+1,dp));
+                res = Math.max(res,helper(boxes,i+1,z-1,0,dp)+helper(boxes,z,j,m+1,dp)); // 后者的m+1表示左边的值
             }
         }
         return res;

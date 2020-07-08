@@ -26,7 +26,7 @@ public class 在二叉树中找到累加和为指定值的最长路径长度_求
         if(!map.containsKey(curSum)){
             map.put(curSum,level);
         }
-        if(map.containsKey(curSum-k)){
+        if(map.containsKey(curSum-k)){ //可能第一个node 就符合条件，所以需要put(0,0)
             maxLen =  Math.max(maxLen,level-map.get(curSum-k));
         }
         maxLen = helper(head.left,k,curSum,level+1,maxLen,map);

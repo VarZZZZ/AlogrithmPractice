@@ -10,7 +10,7 @@ public class 从乘法表中查找第K大的值 {
         int k = sc.nextInt();
         k = n*m-k+1;
         int low = 1;
-        int high = n*m;
+        int high = n*m; // low  high 是值
         while(low<high){
             int mid = (low+high)/2;
             int cnt = count(n,m,mid);

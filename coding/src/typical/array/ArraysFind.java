@@ -2,7 +2,7 @@ package typical.array;
 
 public class ArraysFind {
 
-    // 从数组中找到满足 。。。 1。。3。。。2   1<3>2 的情况
+    // 从数组中找到满足 。。。 1。。3。。。2   1<3>2 的情况； 也可以利用单调栈
     private boolean find132pattern(int[] nums){
         int n = nums.length,top = n,third = Integer.MIN_VALUE;
 
