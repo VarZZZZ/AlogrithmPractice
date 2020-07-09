@@ -18,7 +18,7 @@ public class GCD_最大公约数 {
     private static long demo(String a,long b){
         long remain = 0;
         for(int i=0;i<a.length();i++){
-            remain = remain*10+ a.charAt(i)-'0';
+            remain = remain*10+ a.charAt(i)-'0';   // 将求余操作提前
             remain %=b;
         }
         return remain;

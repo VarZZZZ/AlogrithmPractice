@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class ContainerWithWater_装水问题 {
+public class  ContainerWithWater_装水问题 {
     // 一般都是设立  l=0 ,r = nums.length;
     // 而后 l++ ,r--;
     // 因为  l ,r 首先要取短的
