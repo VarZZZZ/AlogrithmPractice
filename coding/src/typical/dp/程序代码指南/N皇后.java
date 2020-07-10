@@ -11,7 +11,7 @@ public class N皇后 {
     private int process1(int[] record,int i,int n){
         if(i==n) return 1;
         int res = 0;
-        for(int j=0;j<n;j++){
+        for(int j=0;j<n;j++){     // 表示判断arr[i][j]加入后是否合法
             if(isValid(record,i,j)){
                 record[i]=j;
                 res+=process1(record,i+1,n);
