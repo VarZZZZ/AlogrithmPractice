@@ -28,10 +28,10 @@ public class 递归逆序链表 {
            cur = reverseKGroup(cur,k);
 
            while(count-->0){
-               ListNode tmp = head.next;
+               ListNode next = head.next;
                head.next = cur;
                cur = head;
-               head = tmp;
+               head = next;
            }
            head = cur;
        }

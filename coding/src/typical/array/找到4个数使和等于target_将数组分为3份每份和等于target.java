@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 // 从数组中找出K OR 4 个数 之和等于target
-public class K_4_Sum {
+public class 找到4个数使和等于target_将数组分为3份每份和等于target {
     int len = 0;
     public List<List<Integer>> fourSum(int[] nums, int target) {
         len = nums.length;
@@ -56,4 +56,53 @@ public class K_4_Sum {
         }
         return ans;
     }
+
+    /**
+     * 任意一个整型数组，判断是否可以将数组分为三个区间（区间)，每个区间中数值的和相同
+     */
+    private boolean isSplit3(int[] arr){
+        int sum = 0;
+        for (int a : arr) {
+            sum += a;
+        }
+        if(sum%3!=0) return false;
+        int target = sum/3;
+        return dfs(arr,new boolean[arr.length],0,0,target,3);
+    }
+    private boolean dfs(int[] arr,boolean[] f,int res,int idx,int target,int k){
+        if(k==0&&res==target&&idx==arr.length) return true;
+        if(idx==arr.length) return false;
+        if(res==target&&k>0) return dfs(arr,f,0,idx,target,k-1);
+        for (int i = idx; i < arr.length; i++) {
+            if(f[i]) continue;
+            f[i] = true;
+            if(dfs(arr,f,res+arr[i],i+1,target,k)) return true;
+            f[i] = false;
+        }
+        return false;
+    }
+
+    boolean isSplit3_2(int[] arr){
+        int sum = 0;
+        for (int a : arr) {
+            sum += a;
+        }
+        if(sum%3!=0) return false;
+        int target = sum/3;
+        int cnt = 0;
+        sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum +=arr[i];
+            if(sum==target){              // 可以直接这样算，贪心算也可以,及时arr[0,,,i] arr[0...i..j]都为target
+                                        // arr[i...j]可以归为第二个里面
+                cnt++;
+                sum=0;
+            }
+
+        }
+        if(cnt==3) return true;
+        return false;
+    }
+
+
 }

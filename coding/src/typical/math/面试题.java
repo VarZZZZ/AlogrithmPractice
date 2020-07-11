@@ -6,5 +6,8 @@ package typical.math;
  * @Version 1.0
  */
 public class 面试题 {
+    /**
+     * 二分法给数字开根号
+     */
 }
 
