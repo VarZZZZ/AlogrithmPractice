@@ -16,7 +16,7 @@ public class 给定字符串_包括括号和加减_计算 {
         for(char c:sc){
             if(Character.isDigit(c)){
                 temp = temp*10 + (int)(c-'0');
-            }else if(c=='+'){
+            }else if(c=='+'){     // temp ' ' + ' ' 将加号前面的数直接加到res上，其中temp由前一个sign
                 res +=temp*sign;
                 temp = 0;
                 sign = 1;
@@ -32,8 +32,8 @@ public class 给定字符串_包括括号和加减_计算 {
             }else if(c==')'){
                 res +=temp*sign;
                 temp = 0;
-                int sss = st.pop();
-                int rs = st.pop();
+                int sss = st.pop(); //符号
+                int rs = st.pop();  // 数值
                 res = sss*res+rs;
             }
 
