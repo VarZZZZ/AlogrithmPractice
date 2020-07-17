@@ -64,7 +64,8 @@ public class Sort_array {
         }
         return result;
     }
-    //两路归并算法，两个排好序的子序列合并为一个子序列
+
+    //两路归并算法，一个排好序的子序列合并为一个子序列
     public void merge(int []a,int left,int mid,int right){
         int []tmp=new int[a.length];//辅助数组
         int p1=left,p2=mid+1,k=left;//p1、p2是检测指针，k是存放指针
@@ -81,7 +82,6 @@ public class Sort_array {
         for (int i = left; i <=right; i++)
             a[i]=tmp[i];
     }
-
     public void mergeSort(int [] a,int start,int end){
         if(start<end){//当子序列中只有一个元素时结束递归
             int mid=(start+end)/2;//划分子序列

@@ -1,5 +1,7 @@
 package typical.array_程序代码指南;
 
+import java.util.Scanner;
+
 /**
  * @Author: ly
  * @Date: 2020/7/2 23:13
@@ -8,17 +10,49 @@ package typical.array_程序代码指南;
 public class 转圈打印矩阵和之字形打印矩阵 {
 
     // spiral
-    private void spiralPrint(int[][] matrix){
-        int tR=0;
-        int tC=0;
-        int dR=matrix.length-1;
-        int dC=matrix[0].length-1;
-        while(tR<=dR&&tC<=dC){
-            printEdge(matrix,tR++,tC++,dR--,dC--);// tR,dR,为打印的上边界和下边界。
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int[][] arr = new int[n][m];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                arr[i][j] = sc.nextInt();
+            }
+        }
+        int left=0,right=m-1;
+        int top=0,bottom = n-1;
+        while(left<=right&&top<=bottom){
+            printEdge(arr,left++,right--,top++,bottom--);
         }
     }
-    private void printEdge(int[][] matrix,int tR,int tC,int dR,int dC){ // 打印一圈
-
+    private static void printEdge(int[][] arr,int left,int right,int top,int bottom){
+        int i=top;
+        int j = left;
+        if(left==right){
+            while(i<=bottom){
+                System.out.print(arr[i++][j]+" ");
+            }
+            return;
+        }
+        if(top==bottom){
+            while(j<=right){
+                System.out.print(arr[i][j++]+" ");
+            }
+            return;
+        }
+        while(i<bottom){           // 不要用 i<=bottom #####
+            System.out.print(arr[i++][j]+" ");
+        }
+        while(j<right){
+            System.out.print(arr[i][j++]+" ");
+        }
+        while(i>top){
+            System.out.print(arr[i--][j]+" ");
+        }
+        while(j>left){
+            System.out.print(arr[i][j--]+" ");
+        }
     }
 
     // 之
