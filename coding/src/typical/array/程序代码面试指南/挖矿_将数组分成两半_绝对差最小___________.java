@@ -3,6 +3,13 @@ package typical.array.程序代码面试指南;
 import java.util.Scanner;
 
 public class 挖矿_将数组分成两半_绝对差最小___________ {
+    /**
+     * ； dp[n][N][ss] 表示考虑前n个数，只从中不超过选N个数，不超过ss,得到的最大值
+     * @param n
+     * @param weight
+     * @return
+     */
+
     // 小v最近在玩一款挖矿的游戏，该游戏介绍如下：
     //
     //    1、每次可以挖到多个矿石，每个矿石的重量都不一样，挖矿结束后需要通过一款平衡矿车运送下山；

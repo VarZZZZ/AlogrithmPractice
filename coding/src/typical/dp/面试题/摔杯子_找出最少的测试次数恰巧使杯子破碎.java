@@ -48,8 +48,6 @@ public class 摔杯子_找出最少的测试次数恰巧使杯子破碎 {
         int[][] dp = new int[n][k];
 
 
-
-
         for(int i=1;i<=n;i++){
             for(int j=1;j<=k;j++){
 

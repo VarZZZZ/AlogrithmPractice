@@ -29,7 +29,7 @@ public class 二维矩阵中最大的正方形面积 {
         int[] height = new int[arr[0].length];  //指的是最大矩形中的高;而非arr的高
         for(int i=0;i<arr.length;i++){
             for(int j=0;j<arr[0].length;j++){
-                height[j] = height[j]==0?0:height[j]+1;
+                height[j] = arr[i][j]==0?0:height[j]+1; //如果为为0 则直接让height[j]==0,因为height[j]不为0的时候已经算了
             }
             maxArea = Math.max(maxArea,maxRecFromBottom(height));
         }
@@ -42,7 +42,7 @@ public class 二维矩阵中最大的正方形面积 {
             while(!st.isEmpty()&&height[i]<=height[st.peek()]){         // 当前高度小于栈中的高度， 求以栈中的height[j]为高度的矩形
                                                                         // 此时height[j]应该为栈最高的，宽则是以当前i和左边的一个k的差
                 int j =st.pop();
-                int k = st.isEmpty()?-1:st.peek();          // 如果Height[i]=0，那么栈中的值需要全部抛出; k为左边的idx。且该idx的值比h[j]的小；
+                int k = st.isEmpty()?-1:st.peek();          // 如果Height[i]=0，那么栈中的值需要全部抛出; k为左边的idx。且该idx的值比h[j]的小； 如果栈中为空，则表示或-当前栈顶为迄今为止的最小值
                 int cur = (i-k-1)*height[j];                                             // 栈中的值从 顶到底 是从大到小的
                 maxArea = Math.max(maxArea,cur);
             }

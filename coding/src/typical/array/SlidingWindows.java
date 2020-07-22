@@ -91,7 +91,7 @@ public class SlidingWindows {
                 qmax.pollLast();
             }
             qmax.addLast(i); // qmax 从大到小(指的是ar[i])
-            if(qmax.peekFirst()==i-w){
+            if(qmax.peekFirst()==i-w){ //窗口右移，如果当前最大值为应该移掉的值
                 qmax.pollFirst();
             }
             if(i>=w-1){ //在i>=w-1之后，每一个循环都需要添加一个res[idx]

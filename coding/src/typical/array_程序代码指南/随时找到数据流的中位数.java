@@ -25,7 +25,7 @@ public class 随时找到数据流的中位数 {
             minHeap = new PriorityQueue<>();
         }
         private void addNum(int n){
-            if(maxHeap.size()==0||n<=maxHeap.peek()){
+            if(maxHeap.size()==0||n>=maxHeap.peek()){
                 maxHeap.offer(n);
             }else{
                 minHeap.offer(n);

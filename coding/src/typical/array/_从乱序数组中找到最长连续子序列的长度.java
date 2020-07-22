@@ -21,6 +21,11 @@ public class _从乱序数组中找到最长连续子序列的长度 {
         return res;
     }
 
+    /**
+     *  最长连续递增子序列，其中递增，表示可以利用二分等方法来做
+     * @param arr
+     * @return
+     */
     // 二分方法
     //1     10                  2                     3                  4
     //res=1 rs=2;dp[1]=10   rs=2;dp[1]=10          rs=3 dp[2]=3               rs=4
@@ -30,7 +35,7 @@ public class _从乱序数组中找到最长连续子序列的长度 {
         int[] dp = new int[arr.length];
         int res = 0;  // 下标
         for(int a:arr){
-            int l=0,r=res;
+            int l=0,r=res;   // l和res之间是有序的，所以可以二分
             while(l<r){            // dp[l]...dp[r]是有序的
                 int m = (l+r)/2;
                 if(dp[m]<a) l = m+1;
