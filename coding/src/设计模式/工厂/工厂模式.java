@@ -52,6 +52,7 @@ class BmwDriver extends Driver_{
     }
 }
 
+// 相较于简单工厂模式而言，没有if判断
 class Boss{
     public static void main(String[] args) {
         Driver_ d = new BenzDriver();

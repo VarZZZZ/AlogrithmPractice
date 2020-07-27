@@ -5,15 +5,16 @@ package typical.Tree;
  * @Date: 2020/7/7 22:17
  * @Version 1.0
  */
-class Node{
-    int val;
-    Node left;
-    Node right;
-    Node(int v){
-        this.val=v;
-    }
-}
+
 public class Tree_基本问题 {
+    class Node{
+        int val;
+        Node left;
+        Node right;
+        Node(int v){
+            this.val=v;
+        }
+    }
 
     /**
      * 将数组转化为二叉排序数

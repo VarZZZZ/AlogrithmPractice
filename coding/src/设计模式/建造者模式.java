@@ -1,4 +1,4 @@
-package 设计模式.工厂;
+package 设计模式;
 
 public class 建造者模式 {
 }
@@ -29,7 +29,7 @@ class User {
         //设计技巧：返回值是该内部类对象为了调用时候实现链式编程
         public UserBuilder username(String username) {
             this.username = username;
-            return this;
+            return this; // 返回该对象，一边继续链式调用
         }
         public UserBuilder password(String password) {
             this.password = password;

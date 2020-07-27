@@ -26,7 +26,7 @@ public class DeleteNode {
 
             TreeNode minNode = findMin(root.right);
             root.val = minNode.val;
-            root.right = deleteNode(root.right, root.val);
+            root.right = deleteNode(root.right, root.val); // 递归删除 替换后的节点
         }
         return root;
     }

@@ -13,7 +13,7 @@ public class ObserverModel {
 
 // 主题和观察者之间的关系
 
-// 抽象观察者
+// 抽象观察者-- 需要根据主题变化而发生变化update
 interface Observer{
     void update();
 }

@@ -3,7 +3,7 @@ package 笔试.pdd;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
-public class _2020_4_色子最大值的期望 {
+public class _2020_4_色子最大值的期望_小数处理 {
     //http://39.108.236.169:8080/article/2
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -28,6 +28,10 @@ public class _2020_4_色子最大值的期望 {
             pre = tp;
         }
         DecimalFormat dec = new DecimalFormat(".00");
+        // 这种方法0.000->.000,第一个0不会显示
         System.out.println(dec.format(sum));
+
+        // best
+        System.out.printf("%.6f\n",sum);
     }
 }

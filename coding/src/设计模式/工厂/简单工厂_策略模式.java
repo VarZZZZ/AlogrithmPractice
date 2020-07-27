@@ -70,6 +70,6 @@ class StrategyFactory{
     public static void main(String[] args) {
         Car c = new Benz();
         CarStrategyDriver context = new CarStrategyDriver(c);
-        c.drive();
+        context.drive();
     }
 }

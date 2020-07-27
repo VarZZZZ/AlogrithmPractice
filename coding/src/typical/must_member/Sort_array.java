@@ -235,7 +235,7 @@ public class Sort_array {
             bucket.add(new ArrayList<>());
         }
         int mod=10,div=1;
-        for(int i=0;i<maxDigit;i++,mod*=10,div*=10){
+        for(int i=0;i<maxDigit;i++,mod*=10,div*=10){ // 循环-最大位数次
             for(int j=0;j<array.length;j++){
                 int n = (array[j]%mod) /div;
                 bucket.get(n).add(array[j]);

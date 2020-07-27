@@ -25,6 +25,7 @@ class Noodle implements NoodleDecorate{
     }
 }
 class ChildNoodle implements NoodleDecorate{
+    // Noodle 和childNoddle 都实现了装饰接口，且childNoodle有着Noodle的成员变量，并以构造器方法初始化
     private Noodle noodle;
     public ChildNoodle(Noodle noodle){
         this.noodle=noodle;
