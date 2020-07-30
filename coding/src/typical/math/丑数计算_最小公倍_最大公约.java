@@ -47,6 +47,22 @@ class 丑数计算_最小公倍_最大公约 {
         }
         return dp[n-1];
     }
+    // primes 表示 2 7 13 19 ... 不再固定是3个
+    public int nthSuperUglyNumber(int n, int[] primes) {
+        int[] res = new int[n];
+        res[0] = 1;
+        int[] cur = new int[primes.length];
+
+        for(int i=1;i<n;i++){
+            res[i]=Integer.MAX_VALUE;
+            for(int j=0;j<primes.length;j++){
+                if(primes[j]*res[cur[j]]==res[i-1])
+                    cur[j]++;
+                res[i]=Math.min(res[i],primes[j]*res[cur[j]]);
+            }
+        }
+        return res[n-1];
+    }
 
     /**
      * 二分法

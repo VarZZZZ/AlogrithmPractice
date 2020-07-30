@@ -33,7 +33,7 @@ public class 递归逆序链表 {
                cur = head;
                head = next;
            }
-           head = cur;
+           head = cur;  //*****
        }
        return head;
    }

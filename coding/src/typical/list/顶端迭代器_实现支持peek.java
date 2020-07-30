@@ -15,37 +15,38 @@ public class 顶端迭代器_实现支持peek {
      *
      * 创建一个新的迭代器，指向原迭代器的后一位
      */
-}
-class PeekingIterator implements Iterator<Integer> {
-    private Integer next;
-    private Iterator<Integer> ite;
-    public PeekingIterator(Iterator<Integer> iterator) {
-        // initialize any member here.
-        ite = iterator;
-        if(ite.hasNext()){
-            next=ite.next();
+    class PeekingIterator implements Iterator<Integer> {
+        private Integer next;
+        private Iterator<Integer> ite;
+        public PeekingIterator(Iterator<Integer> iterator) {
+            // initialize any member here.
+            ite = iterator;
+            if(ite.hasNext()){
+                next=ite.next();
+            }
+        }
+
+        // Returns the next element in the iteration without advancing the iterator.
+        public Integer peek() {
+            return next;
+        }
+
+        // hasNext() and next() should behave the same as in the Iterator interface.
+        // Override them if needed.
+        @Override
+        public Integer next() {
+            Integer res = next;
+            if(ite.hasNext()){
+                next= ite.next();
+            }else
+                next = null;
+            return res;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return next!=null;
         }
     }
-
-    // Returns the next element in the iteration without advancing the iterator.
-    public Integer peek() {
-        return next;
-    }
-
-    // hasNext() and next() should behave the same as in the Iterator interface.
-    // Override them if needed.
-    @Override
-    public Integer next() {
-        Integer res = next;
-        if(ite.hasNext()){
-            next= ite.next();
-        }else
-            next = null;
-        return res;
-    }
-
-    @Override
-    public boolean hasNext() {
-        return next!=null;
-    }
 }
+

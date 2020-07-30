@@ -25,6 +25,11 @@ public class 蓄水池采样算法 {
     private int rand(int max){
         return (int) (Math.random()*max)+1;
     }
+    /**
+     * if(rand(i)<k){
+     *     res[rand(k)-1]=i; // 替换
+     * }
+     */
 
 
 }

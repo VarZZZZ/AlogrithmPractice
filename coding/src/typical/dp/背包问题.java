@@ -1,5 +1,7 @@
 package typical.dp;
 
+import java.util.Arrays;
+
 public class 背包问题 {
     //https://www.jianshu.com/p/50af9094a2ac
     //01背包
@@ -47,6 +49,26 @@ public class 背包问题 {
 //              if(j-k*a[i]<0)break;
 //              f[j] = max(f[j], f[j-k*a[i]]+k*b[i]);
 //          }
+
+    //现有总金额T，n件商品的价格分别为p1,p2,…,pn，问有多少种购买方法正好花完T。
+    private static int waysCostAll(int T,int[] p){
+        int[] dp = new int[T+1];
+        dp[0] = 1;
+        int n = p.length;
+        Arrays.sort(p);
+        for(int i=0;i<n;i++){
+            for(int j=p[i];j<=T;j++){
+                // dp[i][j] = dp[i-1][j]+dp[i][j-p[i]]
+                dp[j] = dp[j-p[i]]+dp[j];
+            }
+        }
+        return dp[T];
+    }
+
+    public static void main(String[] args) {
+        int[] arr = new int[]{1,2};
+        System.out.println(waysCostAll(4,arr));
+    }
 
 
 

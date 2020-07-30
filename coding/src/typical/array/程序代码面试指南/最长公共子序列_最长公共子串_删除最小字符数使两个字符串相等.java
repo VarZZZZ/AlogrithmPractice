@@ -1,9 +1,9 @@
 package typical.array.程序代码面试指南;
 
-public class 最长公共子序列_最长公共子串 {
+public class 最长公共子序列_最长公共子串_删除最小字符数使两个字符串相等 {
 
 
-    // 子序列
+    // 子序列   --与删除最小字符数使两个字符串相等问题一致
     //1a2c3d4e5f  b1d23ca45; => 12345
     private int[][] getdp(char[] str1,char[] str2){
         int[][] dp = new int[str1.length][str2.length];
@@ -66,7 +66,7 @@ public class 最长公共子序列_最长公共子串 {
 
         }
         for(int i=1;i<str1.length;i++){
-            for(int j=0;j<str2.length;j++){
+            for(int j=1;j<str2.length;j++){
                 if(str1[i]==str2[j]){
                     dp[i][j] = dp[i-1][j-1]+1;
                 }

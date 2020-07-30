@@ -8,17 +8,25 @@ import java.util.Set;
 public class IpV4_6 {
     public String validIp(String IP){
         String[] ipv4 = IP.split("\\.",-1);
-        String[] ipv6 = IP.split("\\:",-1);
+        String[] ipv6 = IP.split(":",-1);
         if(IP.chars().filter(ch -> ch == '.').count() == 3){
-            for(String s : ipv4) if(isIPv4(s)) continue;else return "Neither"; return "IPv4";
+            for(String s : ipv4) if(isIPv4(s)) {
+            } else return "Neither";
+            return "IPv4";
         }
         if(IP.chars().filter(ch -> ch == ':').count() == 7){
-            for(String s : ipv6) if(isIPv6(s)) continue;else return "Neither";return "IPv6";
+            for(String s : ipv6) if(isIPv6(s)) {
+            } else return "Neither";
+            return "IPv6";
         }
         return "Neither";
     }
     public static boolean isIPv4 (String s){
-        try{ return String.valueOf(Integer.valueOf(s)).equals(s) && Integer.parseInt(s) >= 0 && Integer.parseInt(s) <= 255;}
+
+        try{
+            // 判断字符串是否存在前0，可以先Integer.valueOf转化为int，再转化为String.并比较两个String
+            return String.valueOf(Integer.valueOf(s)).equals(s) && Integer.parseInt(s) >= 0 && Integer.parseInt(s) <= 255;
+        }
         catch (NumberFormatException e){return false;}
     }
     public static boolean isIPv6 (String s){

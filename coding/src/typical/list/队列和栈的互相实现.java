@@ -35,32 +35,36 @@ public class 队列和栈的互相实现 {
             return queue.isEmpty();
         }
     }
-}
 
-/**
- * 栈实现队列
- */
-class TwoStackQueue{
-    Stack<Integer> stPush = new Stack<>();
-    Stack<Integer> stPop = new Stack<>();
+    /**
+     * 栈实现队列
+     */
+    class TwoStackQueue{
+        Stack<Integer> stPush = new Stack<>();
+        Stack<Integer> stPop = new Stack<>();
 
-    private void pushToPop(){
-        if(stPop.empty()){
-            while(!stPush.isEmpty()){
-                stPop.push(stPush.pop());
+        private void pushToPop(){
+            if(stPop.empty()){
+                while(!stPush.isEmpty()){
+                    stPop.push(stPush.pop());
+                }
             }
         }
+
+        void add(int i){
+            stPush.push(i);
+            pushToPop();
+        }
+        int poll(){
+            if(stPop.empty()&&stPush.empty()){
+                return -1;
+            }
+            pushToPop();
+            return stPop.pop();
+        }
     }
 
-    void add(int i){
-        stPush.push(i);
-        pushToPop();
-    }
-    int poll(){
-        if(stPop.empty()&&stPush.empty()){
-            return -1;
-        }
-        pushToPop();
-        return stPop.pop();
-    }
+
 }
+
+

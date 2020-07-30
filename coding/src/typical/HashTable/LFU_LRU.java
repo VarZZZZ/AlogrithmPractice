@@ -64,8 +64,6 @@ public class LFU_LRU {
         }
     }
 
-
-
     class LRUCache{
         private int capacity;
         private DLinkNode head,tail;
@@ -114,7 +112,7 @@ public class LFU_LRU {
                 return -1;
             }
         }
-        private void put(int key,int val){
+        private void put(int key,int val){  // LFU LRU都是在put时删除节点
             DLinkNode n = map.get(key);
             if(n==null){
                 DLinkNode node = new DLinkNode();
@@ -123,7 +121,7 @@ public class LFU_LRU {
                 addNode(node);
                 map.put(key,node);
                 count++;
-                if(count>this.capacity){   // 删两个
+                if(count>this.capacity){   // 删两个-先删链表，再删Map
                     DLinkNode tail=this.popTail();
                     this.map.remove(tail.key);
                     count--;

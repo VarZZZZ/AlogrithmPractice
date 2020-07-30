@@ -1,6 +1,12 @@
 package typical.Tree;
 
 public class 寻找最近公共父节点 {
+    class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode(int x) { val = x; }
+    }
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if(root==null || root.val==p.val || root.val==q.val)
             return root;

@@ -11,7 +11,7 @@ public class TreeMap_典型用法 {
 
     public void addRange(int left, int right) {
         if(left>=right) return;
-        Integer start = map.floorKey(left);
+        Integer start = map.floorKey(left); //地板，小于left的最大值
         Integer end = map.floorKey(right);
         if(start==null&&end==null){
             map.put(left,right);

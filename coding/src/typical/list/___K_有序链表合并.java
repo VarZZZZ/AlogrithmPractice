@@ -1,11 +1,12 @@
 package typical.list;
 import java.util.*;
-class ListNode {
-      int val;
-      ListNode next;
-      ListNode(int x) { val = x; }
- }
-public class K_有序链表合并 {
+
+public class ___K_有序链表合并 {
+    class ListNode {
+        int val;
+        ListNode next;
+        ListNode(int x) { val = x; }
+    }
     public ListNode mergeKLists(ListNode[] lists) {
         return partition(lists,0,lists.length-1);
     }

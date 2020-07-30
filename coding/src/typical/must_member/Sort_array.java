@@ -240,7 +240,7 @@ public class Sort_array {
                 int n = (array[j]%mod) /div;
                 bucket.get(n).add(array[j]);
             }
-            int idx=0;
+            int idx=0; // 将桶中的数据收集起来放到array中
             for(List<Integer> b:bucket){
                 if(b.size()>0){
                     for(int bb:b){

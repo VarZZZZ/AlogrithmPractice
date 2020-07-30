@@ -30,7 +30,7 @@ public class 消消乐 {
         }
         return cnt;
     }
-    // 重要 消除字符串中3个及以上的字符串；消消乐的方式
+    // 重要 消除字符串中3个及以上的字符串；消消乐的方式--------递归remove
     private String remove(String board){
         for(int i=0,j=0;j<board.length();j++){
             if(board.charAt(i)==board.charAt(j)) continue;

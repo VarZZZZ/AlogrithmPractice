@@ -17,7 +17,7 @@ public class 交换位得到_大于给定值的最小值 {
         int n = sc.length-1;
         int hi = n-1;
         while(hi>=0){
-            if(sc[hi]<sc[hi+1]){
+            if(sc[hi]<sc[hi-1]){
                 break;
             }
             hi--;
