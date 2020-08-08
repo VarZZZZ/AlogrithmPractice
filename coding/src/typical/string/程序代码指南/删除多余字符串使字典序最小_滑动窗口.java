@@ -9,7 +9,7 @@ public class 删除多余字符串使字典序最小_滑动窗口 {
     // 3. 在str[0..4]上找到最小字符，str[1]='a',res[0]
     // 4.在挑选str[1]的右边，字符串为'acbaccac'，删除“a',的str='cbccc',继续从这里面找res[1]
 
-    private String removeDuplicateLetter(String s){
+    private String removeDuplicateLetter(String s){  // 该版本有问题
         char[] str = s.toCharArray();
         int[] cnt = new int[26];
         for(char c:str){
@@ -44,5 +44,45 @@ public class 删除多余字符串使字典序最小_滑动窗口 {
             }
         }
         return String.valueOf(res,0,idx);
+    }
+
+    public String removeDuplicateLetters(String s) {
+        int[] map  = new int[26];
+        int pre=-1;
+        StringBuilder sb = new StringBuilder();
+        int l=0,r=0;
+        char[] sc = s.toCharArray();
+        for(int i=0;i<sc.length;i++){
+            map[sc[i]-'a']++;
+        }
+        char[] res=  new char[26];
+        int idx=0;
+        while(r<sc.length){
+            if(map[sc[r]-'a']!=1){
+                if(map[sc[r]-'a']!=-1){
+                    map[sc[r]-'a']--;
+                }
+                r++;
+            }else{
+                map[sc[r]-'a']--;
+                int pick = -1;
+                for(int i=l;i<=r;i++){
+                    if(map[sc[i]-'a']==-1) continue; // 必须需要
+                    if(pick==-1||sc[pick]>sc[i]){
+                        pick = i;
+                    }
+                }
+                res[idx++]=sc[pick];
+                map[sc[pick]-'a']=-1;
+                for(int i=pick+1;i<=r;i++){
+                    if(map[sc[i]-'a']!=-1)
+                        map[sc[i]-'a']++;
+                }
+                l=pick+1;
+                r=l;
+            }
+        }
+        return new String(res,0,idx);
+
     }
 }

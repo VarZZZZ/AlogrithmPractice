@@ -14,13 +14,13 @@ public class 两个排序数组中找到第k小的数 {
         int mid1=0;
         int mid2 = 0;
         int offset = 0; // 如果元素个数为奇数，则为0，否则为1
-        while(s1<e1){
+        while(s1<e1){ // a1.length<=a2.length
             mid1 = (s1+e1)/2;
             mid2  =(s2+e2)/2;
-            offset = ((e1-s1+1)&1)^1;
+            offset = ((e1-s1+1)&1)^1; // 奇偶数，如果s1 e1 之间的数字个数为偶数，则为1
             if(a1[mid1]>a2[mid2]){   // 如果a1的中位数大于a2的中位数，则上中位数会位于a1的中位数左边，a2的中位数右边
-                e1=mid1;
-                s2 = mid2+offset;
+                e1=mid1;       // 尾巴向左靠拢，只需要==mid即可
+                s2 = mid2+offset; // 左端向右靠拢，需要==mid+offset，如果s1 e1之间数字个数为偶数，为1
             }else if(a1[mid1]<a2[mid2]){
                 e2 = mid2;
                 s1 = mid1+offset;

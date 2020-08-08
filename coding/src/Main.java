@@ -1,38 +1,64 @@
 import java.util.*;
 
-public class Main{
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int[] arr = new int[n];
-        Map<Integer,PriorityQueue<Integer>> map = new HashMap<>();
-        PriorityQueue<Integer> pq = new PriorityQueue<>();
-        for (int i = 0; i < n; i++) {
-            arr[i] = sc.nextInt();
-            map.putIfAbsent(arr[i],new PriorityQueue<>());
-            map.get(arr[i]).offer(i);
-            if(map.get(arr[i]).size()>1){
-                if(!pq.contains(arr[i])) pq.offer(arr[i]);
+public class Main {
+
+
+//    class Solution {
+//        public String reverseParentheses(String s) {
+//            Stack<Character> st = new Stack<>();
+//            List<Character> ls = new ArrayList<>();
+//            for (int i = 0; i < s.length(); i++) {
+//                if (s.charAt(i) == ')') {
+//                    while (st.peek() != '(') {
+//                        ls.add(st.pop());
+//                    }
+//                    st.pop();
+//                    for (int c = 0; c < ls.size(); c++) {
+//                        st.push(ls.get(c));
+//                    }
+//                    ls.clear();
+//                } else {
+//                    st.push(s.charAt(i));
+//                }
+//            }
+//            StringBuilder sb = new StringBuilder();
+//            while (!st.isEmpty()) {
+//                sb.append(st.pop());
+//            }
+//            return sb.reverse().toString();
+//        }
+//    }
+
+    class Node {
+        int data;
+        Node next;
+    }
+
+    class Solution {
+        public Node mergeTwoLists(Node n1, Node n2) {
+            if (n1 == null) return n2;
+            if (n2 == null) return n1;
+            Node head = n1.data < n2.data ? n1 : n2;
+            Node pre = head;
+            Node p = pre.next;
+            Node q = head == n1 ? n2 : n1;
+            while (p != null && q != null) {
+                if (p.data <= q.data) {
+                    pre = p;
+                    p = p.next;
+                } else {
+                    Node next = q.next;
+                    q.next = p;
+                    pre.next = q;
+                    pre = pre.next;
+                    q = next;
+                }
             }
-        }
-        boolean[] flag = new boolean[n];
-        while(!pq.isEmpty()){
-            int val = pq.peek();
-            PriorityQueue<Integer> tp = map.get(val);
-            flag[tp.poll()]=true; // 标记删除
-            arr[tp.peek()]=val*2;
-            map.putIfAbsent(val*2,new PriorityQueue<>());
-            map.get(val*2).offer(tp.poll());
-            if(tp.size()<2) pq.poll();
-            if(map.get(val*2).size()>1)
-                pq.offer(val*2);
-        }
-        for (int i = 0; i < n; i++) {
-            if(!flag[i]){
-                System.out.print(arr[i]+" ");
-            }
+            pre.next = q == null ? p : q;
+            return head;
         }
     }
+
 
 }
 

@@ -1,5 +1,7 @@
 package typical.list;
 
+import java.util.ArrayList;
+
 public class 递归逆序链表 {
     class ListNode {
       int val;
@@ -37,5 +39,17 @@ public class 递归逆序链表 {
        }
        return head;
    }
+
+    /**
+     * 递归 从尾遍历单链表
+     */
+    ArrayList<Integer> res = new ArrayList<>();
+    public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
+        if(listNode==null) return res;
+        res = printListFromTailToHead(listNode.next);
+        res.add(listNode.val);
+        return res;
+
+    }
 
 }

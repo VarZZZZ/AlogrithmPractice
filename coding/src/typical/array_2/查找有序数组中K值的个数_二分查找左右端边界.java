@@ -28,7 +28,7 @@ public class 查找有序数组中K值的个数_二分查找左右端边界 {
 
         r = l;
         l=0;
-        while(l<=r){
+        while(l<=r){            // 必须是l<=r ,且不能是l=mid; 防止[2,2],[1]这样的情况
             mid = (l+r)/2;
             if(arr[mid]<k){
                 l = mid+1;

@@ -18,7 +18,7 @@ public class 旋转数组查找target {
                 continue;
             }
             // 先判断m所在哪一段;再判断target所在位置
-            if(arr[m]>=arr[l]){
+            if(arr[m]>=arr[0]){
                 if(k>=arr[l]&&k<arr[m]){ // 先确定肯定的一段，即k在连续递增的一段
                     r = m-1;
                 }else{
