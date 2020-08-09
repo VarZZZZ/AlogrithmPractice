@@ -10,6 +10,7 @@ import java.util.Map;
  *
  * 直接利用map存储s[i],和i是解决一切子数组累加和为固定值的方法
  * s[i]为arr[0..i]的和
+ * 但不是最优，利用Map<integer> 存储是最好的方法， if map.containsKey(curSum-target) ,表明存在使和为taget的子数组
  * 子数组累加和最大 利用遍历一遍，见 基本问题_面试题
  */
 public class 子数组累加和为给定值的问题 {
