@@ -50,6 +50,8 @@ public class 背包问题 {
 //              f[j] = max(f[j], f[j-k*a[i]]+k*b[i]);
 //          }
 
+
+
     //现有总金额T，n件商品的价格分别为p1,p2,…,pn，问有多少种购买方法正好花完T。
     private static int waysCostAll(int T,int[] p){
         int[] dp = new int[T+1];
@@ -65,10 +67,20 @@ public class 背包问题 {
         return dp[T];
     }
 
+
+
+
     public static void main(String[] args) {
         int[] arr = new int[]{1,2};
         System.out.println(waysCostAll(4,arr));
     }
+
+
+    /**
+     * array_2 数组2n个选出n个，是两组的和差值最小。经典背包法
+     */
+
+
 
 
 

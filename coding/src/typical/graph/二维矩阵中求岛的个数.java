@@ -4,6 +4,7 @@ package typical.graph;
  * @Author: ly
  * @Date: 2020/7/10 16:03
  * @Version 1.0
+ * typical.array_2;
  */
 public class 二维矩阵中求岛的个数 {
     // grid = [

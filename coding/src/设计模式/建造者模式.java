@@ -16,7 +16,7 @@ class User {
                 ", id=" + id +
                 '}';
     }
-    User(String username, String password, Integer id) {
+    private User(String username, String password, Integer id) { // private 不能在外部使用new User(), 必须在User 内使用 new User()
         this.username = username;
         this.password = password;
         this.id = id;

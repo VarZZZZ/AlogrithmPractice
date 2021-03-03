@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-public class DFS_IncreasingSubsequence_去重 {
+public class DFS_递增子序列_找出所有_去重 {
 
     //对于一个数组，找到所有的递增序列
     public List<List<Integer>> findSubsequences(int[] nums) {

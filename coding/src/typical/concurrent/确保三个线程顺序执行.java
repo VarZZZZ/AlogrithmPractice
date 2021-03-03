@@ -45,6 +45,7 @@ class JoinThread {
 }
 
 // 2. CountDownLatch  无非就是阻塞一部分线程让其在达到某个条件之后再执行。
+//顺序执行是 pre,cur countDownLatch;  交替执行cur,next,Semaphore
 class WorkLatch implements Runnable {
     private CountDownLatch pre;
     CountDownLatch cur;

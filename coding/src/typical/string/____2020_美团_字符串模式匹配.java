@@ -11,7 +11,6 @@ public class ____2020_美团_字符串模式匹配 {
     //'.' 匹配任意单个字符
     //'*' 匹配零个或多个前面的那一个元素
     //
-
     //https://leetcode-cn.com/problems/regular-expression-matching/solution/zheng-ze-biao-da-shi-pi-pei-by-leetcode-solution/
 
     class Solution {
@@ -30,7 +29,7 @@ public class ____2020_美团_字符串模式匹配 {
                         dp[i][j] |= dp[i][j-2]; //匹配0次时，直接比较sc[i] 和pc[j-2]的匹配程度。
 
                         if(i>0&&(sc[i-1]==pc[j-2]||pc[j-2]=='.')){   //当可以匹配多次时，如abbb 和ab*;  在最后的b和*时，sc[3]==pc[1]时，比较sc[2]和pc[2]
-                            // 相当于扔掉s[i-1]，再进行匹配，
+                            // 相当于扔掉s[i-1]，再进行匹配，因为*可以模拟多个s[i-1]，即相当于同时去掉一个s[i-1].
                             dp[i][j] |= dp[i-1][j];
                         }
                     }else{

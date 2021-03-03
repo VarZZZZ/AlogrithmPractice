@@ -31,13 +31,13 @@ public class 求树的直径_图中最长的路径 {
     private void dfs(Map<Integer, List<Integer>> map,Set<Integer> st,int root,
                      Map<Integer,Integer> f,Map<Integer,Integer> g){
         f.put(root,0);
-        g.put(root,0);
+        g.put(root,0);   // f(root,r)是表示root节点到边界节点的最长距离为r 、、 g(root,c)是表示root节点到边界节点的次长距离为c，且和
         for (Integer nei : map.get(root)) {
             if(!st.contains(nei)){
                 st.add(nei);
                 dfs(map,st,nei,f,g);
                 st.remove(nei);
-                // 先搜索到最底层-远离root的最远端点
+                // 先搜索到最底层-远离root的最远端点 , nei是比root更远的点 ；  首次便利时，f(root),g(root)都是0，然后遍历nei，for循环遍历，保证f和g不是同一条路径
                 if(f.get(root)<f.get(nei)+1){//如果发现了一条更长的路径，那么更新f[x]和g[x]。
                     g.put(root,f.get(root));
                     f.put(root,f.get(nei)+1); // 如果root只有一条nei，那么会出现g[root]=0

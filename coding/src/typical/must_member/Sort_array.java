@@ -5,10 +5,12 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Sort_array {
+
+
     //https://blog.csdn.net/weixin_41190227/article/details/86600821
 
     //冒泡排序
-    public static int[] bubbleSort(int[] array) {
+    public static int[] bubbleSort(int[] array){
         if (array.length == 0)
             return array;
         for (int i = 0; i < array.length; i++)

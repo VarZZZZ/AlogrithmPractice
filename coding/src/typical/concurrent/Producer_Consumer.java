@@ -3,7 +3,6 @@ package typical.concurrent;
 import java.util.LinkedList;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -81,14 +80,14 @@ class ReenTrantLock_Condition {
     private LinkedList<Object> buffer;    //生产者容器
     private int maxSize;           //容器最大值是多少
     private Lock lock;
-    private Condition fullCondition;
+    private Condition notEmptyCondition;
     private Condition notFullCondition;
 
     ReenTrantLock_Condition(int maxSize) {
         this.maxSize = maxSize;
         buffer = new LinkedList<Object>();
         lock = new ReentrantLock();
-        fullCondition = lock.newCondition();
+        notEmptyCondition = lock.newCondition();
         notFullCondition = lock.newCondition();
     }
 
@@ -105,7 +104,7 @@ class ReenTrantLock_Condition {
                 notFullCondition.await();       //满了，添加的线程进入等待状态
             }
             buffer.add(obj);
-            fullCondition.signal(); //通知
+            notEmptyCondition.signal(); //通知
         } finally {
             lock.unlock();
         }
@@ -122,7 +121,7 @@ class ReenTrantLock_Condition {
         lock.lock();
         try {
             while (buffer.size() == 0) { //队列中没有数据了 线程进入等待状态
-                fullCondition.await();
+                notEmptyCondition.await();
             }
             obj = buffer.poll();
             notFullCondition.signal(); //通知

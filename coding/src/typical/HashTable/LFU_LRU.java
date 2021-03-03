@@ -75,6 +75,7 @@ public class LFU_LRU {
             DLinkNode pre;
             DLinkNode next;
         }
+        // 4个基本方法：添加节点、移除节点、移动节点到head、remove最后节点
         private void addNode(DLinkNode node){
             node.pre=head;
             node.next=head.next;
